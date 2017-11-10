@@ -1,9 +1,17 @@
 package me.gjp0609;
 
 /**
+ * 公共接口
+ *
  * @author guojinpeng
  * @date 17.11.9 18:29
  */
 public interface TestService {
+    /**
+     * 返回Hello
+     *
+     * @param name name
+     * @return hello
+     */
     public String getHello(String name);
 }
