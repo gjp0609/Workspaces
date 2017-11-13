@@ -78,7 +78,6 @@ public class QrCodeUtils {
                     encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
             if (bitMatrix != null) {
                 BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
-                System.out.println(image.getHeight());
                 if (minSize != -1) {
                     int k;
                     int i = 1;
