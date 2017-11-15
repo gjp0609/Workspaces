@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * 二维码生成、识别工具
@@ -20,10 +21,11 @@ import java.util.Map;
  * @date 17.11.9 10:54
  */
 public class QrCodeUtils {
+    private static final Logger LOG = Logger.getLogger(QrCodeUtils.class.getSimpleName());
 
     private static String encodeType = "UTF-8";
-    private static int width = 200;
-    private static int height = 200;
+    private static int width = 0;
+    private static int height = 0;
     private static int minSize = -1;
 
     /**
@@ -34,68 +36,47 @@ public class QrCodeUtils {
      * @return 成功或失败
      */
     public static boolean encode(String content, File targetFile) {
-        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
-        hints.put(EncodeHintType.CHARACTER_SET, encodeType);
-        hints.put(EncodeHintType.MARGIN, 0);
-        BitMatrix bitMatrix;
         try {
-            bitMatrix = new MultiFormatWriter().
-                    encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
-            if (bitMatrix != null) {
-                BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
-                System.out.println(image.getHeight());
-                BufferedImage zoomImage;
-                if (minSize != -1) {
-                    int k;
-                    int i = 1;
-                    do {
-                        k = bitMatrix.getHeight() * i++;
-                    } while (k < minSize);
-                    zoomImage = ImageUtils.zoomImage(image, k, k);
-                    minSize = 0;
-                } else
-                    zoomImage = ImageUtils.zoomImage(image, width, height);
-                Result decode = decode(zoomImage);
-                if (decode == null) {
-                    minSize = width > height ? width : height;
-                    encode(content, targetFile);
-                } else ImageIO.write(zoomImage, "png", targetFile);
-            } else return false;
+            BufferedImage image = encode(content);
+            if (image != null) ImageIO.write(image, "png", targetFile);
         } catch (Exception e) {
+            LOG.warning("");
             return false;
         }
         return true;
     }
 
-    public static BufferedImage encode(String content) {
+    /**
+     * 生成二维码
+     *
+     * @param content 二维码内容
+     * @return 二维码图片
+     */
+    public static BufferedImage encode(String content) throws WriterException {
         Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
         hints.put(EncodeHintType.CHARACTER_SET, encodeType);
         hints.put(EncodeHintType.MARGIN, 0);
         BitMatrix bitMatrix;
         BufferedImage zoomImage = null;
-        try {
-            bitMatrix = new MultiFormatWriter().
-                    encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
-            if (bitMatrix != null) {
-                BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
-                if (minSize != -1) {
-                    int k;
-                    int i = 1;
-                    do {
-                        k = bitMatrix.getHeight() * i++;
-                    } while (k < minSize);
-                    zoomImage = ImageUtils.zoomImage(image, k, k);
-                    minSize = 0;
-                } else
-                    zoomImage = ImageUtils.zoomImage(image, width, height);
-                Result decode = decode(zoomImage);
-                if (decode == null) {
-                    minSize = width > height ? width : height;
-                    zoomImage = encode(content);
-                }
+        bitMatrix = new MultiFormatWriter().
+                encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
+        if (bitMatrix != null) {
+            BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            if (minSize != -1) {
+                int k;
+                int i = 1;
+                do {
+                    k = bitMatrix.getHeight() * i++;
+                } while (k < minSize);
+                zoomImage = ImageUtils.zoomImage(image, k, k);
+                minSize = 0;
+            } else
+                zoomImage = ImageUtils.zoomImage(image, width, height);
+            Result decode = decode(zoomImage);
+            if (decode == null) {
+                minSize = width > height ? width : height;
+                zoomImage = encode(content);
             }
-        } catch (Exception e) {
-            return null;
         }
         return zoomImage;
     }

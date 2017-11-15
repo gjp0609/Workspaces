@@ -17,7 +17,7 @@ public class QrCodeUtilsTest {
 //        src = "https://login.teamviewer.com/123https://login.teamviewer.c";
         QrCodeUtils.setSize(1024, 1024);
 //        QrCodeUtils.setMinSize(234);
-        System.out.println(QrCodeUtils.encode(src));
+        System.out.println(QrCodeUtils.encode(src,file));
         System.out.println(QrCodeUtils.decode(file));
     }
 }
