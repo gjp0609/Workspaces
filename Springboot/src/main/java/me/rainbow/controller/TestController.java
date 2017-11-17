@@ -17,6 +17,17 @@ import java.util.Map;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+//    private final TransactionPropagation transactionPropagationService;
+//
+//    @Autowired
+//    public TestController(TransactionPropagation transactionPropagationService) {
+//        this.transactionPropagationService = transactionPropagationService;
+//    }
+//
+//    @RequestMapping(params = "service")
+//    public String service() {
+//        return transactionPropagationService.hello();
+//    }
 
     @RequestMapping(params = "hello")
     public String hello(Model model) {

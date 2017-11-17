@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<span id="json"></span>
+<br/>
+<span id="arr"></span>
+<br/>
+<span id="str"></span>
+<script>
+    var json = [{"1": "a"}, {"2": "b"}];
+    $("#json").html(json + ": " + json.length);
+    var arr = ["aa", "bb", "cc", "dd"];
+    $("#arr").html(arr + ": " + arr.length);
+    var str = "hello你好おはよう";
+    $("#str").html(str + ": " + str.length);
+</script>
+</body>
+</html>
