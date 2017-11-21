@@ -14,4 +14,11 @@ public interface TestService {
      * @return hello
      */
     public String getHello(String name);
+
+    /**
+     * 文件传输
+     *
+     * @return 文件转换为数组
+     */
+    public byte[] transFile();
 }
