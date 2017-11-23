@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<table class="layui-hide" id="test"></table>
+<!--<script id="bar" type="text/html">-->
+<!--<a href="javascript:void(0)" class="customClass" onclick="">click</a>-->
+<!--//</script>-->
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        table.render({
+            elem: '#test',
+            url: '/table?get',
+            cellMinWidth: 80,
+            cols: [[
+                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'name', width: 180, title: '用户名'},
+                {field: 'startDay', width: 180, title: '日期'},
+                {fixed: 'right', width: 120, title: 'opt', toolbar: '#bar'}
+            ]]
+        });
+    });
+</script>
+
+<script type="text/html" id="bar">
+    {{#  console.log(d);                                            }}
+    {{#  var time = d.startDay.split(" ");                          }}
+    {{#  var arr = time[0].split("-");                              }}
+    {{#  var dd = new Date(arr[0] + "/" + arr[1] + "/" + arr[2]);   }}
+    {{#  if (dd > new Date()) {                                     }}
+    <a class="layui-btn layui-btn-mini" lay-event="edit" id="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del" id="del">删除</a>
+    {{#  }                                                          }}
+</script>
+
+<!--<script>-->
+<!--console.log(d);-->
+<!--var time = d.startDay.split(" ");-->
+<!--var arr = time[0].split("-");-->
+<!--var dd = new Date(arr[0] + "/" + arr[1] + "/" + arr[2]);-->
+<!--if (dd > new Date()) {-->
+<!--//    <a href="javascript:void(0)" class="customClass" onclick="">click</a>-->
+<!--}-->
+<!--</script>-->
+</body>
+</html>
