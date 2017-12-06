@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<form class="layui-form" id="inputForm" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="workDayWeek[1]" lay-skin="primary" title="周一">
+            <input type="checkbox" name="workDayWeek[2]" lay-skin="primary" title="周二">
+            <input type="checkbox" name="workDayWeek[3]" lay-skin="primary" title="周三">
+            <input type="checkbox" name="workDayWeek[4]" lay-skin="primary" title="周四">
+            <input type="checkbox" name="workDayWeek[5]" lay-skin="primary" title="周五">
+            <input type="checkbox" name="workDayWeek[6]" lay-skin="primary" title="周六">
+            <input type="checkbox" name="workDayWeek[7]" lay-skin="primary" title="周日">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+        </div>
+    </div>
+</form>
+<button class="layui-btn" id="selectAll" lay-filter="selectAll">全选</button>
+<button class="layui-btn" id="cancelAll" lay-filter="selectAll">取消全选</button>
+<button class="layui-btn" id="checkVal" lay-filter="selectAll">值</button>
+<script>
+
+    layui.use(['form', 'tree', 'layer'], function () {
+        var layer = layui.layer;
+        var form = layui.form;
+        form.render();
+        var $ = layui.jquery;
+
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+
+        $("#selectAll").on("click", function () {
+            console.log($("input[type=checkbox]"));
+            $("input[type=checkbox]").prop("checked", true);
+            form.render();
+            return false;
+        });
+        $("#cancelAll").on("click", function () {
+            console.log($("input[type=checkbox]"));
+            $("input[type=checkbox]").removeAttr("checked");
+            form.render();
+            return false;
+        });
+        $("#checkVal").on("click", function () {
+            var arr = $("input[type=checkbox]");
+            for (var i = 0; i < arr.length; i++) {
+                console.log(arr[i]);
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
