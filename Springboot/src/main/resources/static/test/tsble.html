@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-
+    <link rel="stylesheet" href="../plugins/layui/css/layui.css" media="all">
+    <script src="../plugins/jquery/jquery-3.2.1.js"></script>
+    <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 </head>
 <body>
 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
@@ -24,8 +26,8 @@
 </table>
 </body>
 <script>
-    var month = 12; // 要
-    $.get("http://localhost:8080/MkeyPlus/test.do?map2", "", function (v) {
+    var month = 12;
+    $.get("localhost:8080/MkeyPlus/test.do?map2", "", function (v) {
         var types = v.types;
         var names = v.names;
         var data = v.data;
@@ -54,6 +56,6 @@
             }
 
         }
-    }, "json");
+    }, "jsonp");
 </script>
 </html>

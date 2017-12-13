@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
-    <script src="./js/jquery-3.2.1.js"></script>
-    <script src="./layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../plugins/layui/css/layui.css" media="all">
+    <script src="../plugins/jquery/jquery-3.2.1.js"></script>
+    <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 </head>
 <body>
 <form class="layui-form" id="inputForm" action="">
@@ -34,7 +34,7 @@
         form.render();
         var $ = layui.jquery;
 
-        form.on('submit(demo1)', function(data){
+        form.on('submit(demo1)', function (data) {
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             });

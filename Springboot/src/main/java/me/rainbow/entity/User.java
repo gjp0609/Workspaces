@@ -1,5 +1,7 @@
 package me.rainbow.entity;
 
+import me.rainbow.poi.Excel;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,10 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue
+    @Excel(name = "编号",order = 2)
     private Integer id;
     @Column
+    @Excel(name = "姓名")
     private String name;
 
     public Integer getId() {

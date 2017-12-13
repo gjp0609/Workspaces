@@ -2,6 +2,10 @@
   <dictionary name="Rainbow">
     <words>
       <w>dubbo</w>
+      <w>httpclient</w>
+      <w>httpcomponents</w>
+      <w>jsoup</w>
+      <w>layui</w>
       <w>qrcode</w>
       <w>springboot</w>
       <w>zxing</w>
