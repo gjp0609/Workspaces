@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="OnlineTools:war exploded">
-    <output-path>$PROJECT_DIR$/OnlineTools/target/OnlineTools</output-path>
+  <artifact type="exploded-war" name="AdManagementSystem:war exploded">
+    <output-path>$PROJECT_DIR$/AdManagementSystem/target/AdManagementSystem</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -65,10 +65,15 @@
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-event:1.4.0" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.4.0" />
+          <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.10" />
+          <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
+          <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.10" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/AdManagementSystem/target/OnlineTools/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/AdManagementSystem/target/AdManagementSystem/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="AdManagementSystem/web/Web" />
     </root>

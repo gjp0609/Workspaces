@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="AdManagementSystem" />
         <module name="dubbo_provider" />
         <module name="DubboCommon" />
         <module name="DubboConsumer" />
@@ -14,11 +15,12 @@
         <module name="Springboot" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
+      <module name="AdManagementSystem" target="1.8" />
       <module name="DubboCommon" target="1.5" />
       <module name="DubboConsumer" target="1.5" />
       <module name="DubboProvider" target="1.5" />
-      <module name="OnlineTools" target="1.5" />
+      <module name="OnlineTools" target="1.8" />
       <module name="Springboot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
