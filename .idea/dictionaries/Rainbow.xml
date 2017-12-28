@@ -1,13 +1,20 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Rainbow">
     <words>
+      <w>docx</w>
       <w>dubbo</w>
       <w>httpclient</w>
       <w>httpcomponents</w>
+      <w>jodconverter</w>
       <w>jsoup</w>
       <w>layui</w>
+      <w>openoffice</w>
+      <w>pptx</w>
       <w>qrcode</w>
       <w>springboot</w>
+      <w>webapp</w>
+      <w>wikitext</w>
+      <w>xlsx</w>
       <w>zxing</w>
     </words>
   </dictionary>

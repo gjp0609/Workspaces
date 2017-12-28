@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -11,10 +11,10 @@ import java.util.Map;
  * @author guojinpeng
  * @date 17.8.24 18:06
  */
-public class JsonUtils {
+public class JsonUtil {
     public static List<Map<String, Object>> parstToList(JSONArray array) {
         Object[] objects = array.toArray();
-        ArrayList<Map<String, Object>> arrayList = new ArrayList<Map<String, Object>>();
+        ArrayList<Map<String, Object>> arrayList = new ArrayList<>();
         for (Object o : objects) {
             Map<String, Object> map = (Map<String, Object>) o;
             arrayList.add(map);

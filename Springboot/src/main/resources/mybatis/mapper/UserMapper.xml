@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.rainbow.dao.UserDao">
-    <select id="selectAll" resultType="User">
+    <resultMap id="test" type="" autoMapping="true">
+        <id column="id" property="id"/>
+        <association property="address" autoMapping="true">
+            <id column="addr_id" property="id"/>
+        </association>
+    </resultMap>
+    <select id="selectAll" resultMap="">
         SELECT *
         FROM User
     </select>

@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  * @author guojinpeng
  * @date 17.11.9 10:54
  */
-public class QrCodeUtils {
-    private static final Logger LOG = Logger.getLogger(QrCodeUtils.class.getSimpleName());
+public class QrCodeUtil {
+    private static final Logger LOG = Logger.getLogger(QrCodeUtil.class.getSimpleName());
 
     private static String encodeType = "UTF-8";
     private static int width = 0;
@@ -53,13 +53,12 @@ public class QrCodeUtils {
      * @return 二维码图片
      */
     public static BufferedImage encode(String content) throws WriterException {
-        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
+        Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, encodeType);
         hints.put(EncodeHintType.MARGIN, 0);
         BitMatrix bitMatrix;
         BufferedImage zoomImage = null;
-        bitMatrix = new MultiFormatWriter().
-                encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
+        bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, 0, 0, hints);
         if (bitMatrix != null) {
             BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
             if (minSize != -1) {
@@ -68,10 +67,10 @@ public class QrCodeUtils {
                 do {
                     k = bitMatrix.getHeight() * i++;
                 } while (k < minSize);
-                zoomImage = ImageUtils.zoomImage(image, k, k);
+                zoomImage = ImageUtil.zoomImage(image, k, k);
                 minSize = 0;
             } else
-                zoomImage = ImageUtils.zoomImage(image, width, height);
+                zoomImage = ImageUtil.zoomImage(image, width, height);
             Result decode = decode(zoomImage);
             if (decode == null) {
                 minSize = width > height ? width : height;
@@ -104,7 +103,7 @@ public class QrCodeUtils {
             LuminanceSource source = new BufferedImageLuminanceSource(image);
             Binarizer binarizer = new HybridBinarizer(source);
             BinaryBitmap binaryBitmap = new BinaryBitmap(binarizer);
-            Map<DecodeHintType, Object> hints = new HashMap<DecodeHintType, Object>();
+            Map<DecodeHintType, Object> hints = new HashMap<>();
             hints.put(DecodeHintType.CHARACTER_SET, encodeType);
             result = new MultiFormatReader().decode(binaryBitmap, hints);
         } catch (Exception ignored) {
@@ -115,11 +114,11 @@ public class QrCodeUtils {
     public static void setSize(int width, int height) {
         if (width <= 0) width = 1;
         if (height <= 0) height = 1;
-        QrCodeUtils.width = width;
-        QrCodeUtils.height = height;
+        QrCodeUtil.width = width;
+        QrCodeUtil.height = height;
     }
 
     public static void setMinSize(int minSize) {
-        QrCodeUtils.minSize = minSize;
+        QrCodeUtil.minSize = minSize;
     }
 }

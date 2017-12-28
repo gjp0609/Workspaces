@@ -1,6 +1,6 @@
 package me.rainbow.controller;
 
-import me.rainbow.util.QrCodeUtils;
+import me.rainbow.utils.QrCodeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,7 +23,7 @@ public class QrCodeController {
             response.setHeader("Pragma", "No-cache");
             response.setHeader("Cache-Control", "no-cache");
             response.setDateHeader("Expires", 0);
-            BufferedImage image = QrCodeUtils.encode("hello");
+            BufferedImage image = QrCodeUtil.encode("hello");
             response.setCharacterEncoding("UTF-8");
             response.setContentType("image/*");
             if (image != null) {

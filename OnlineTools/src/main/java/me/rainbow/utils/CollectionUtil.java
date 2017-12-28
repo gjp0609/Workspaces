@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * @author guojinpeng
  * @date 17.12.13 17:48
  */
-public class CollectionUtils {
+public class CollectionUtil {
     /**
      * 根据条件去除list中重复元素并且去除null
      *

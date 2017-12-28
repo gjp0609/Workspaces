@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  * @author guojinpeng
  * @date 17.11.9 13:44
  */
-public class ImageUtils {
+public class ImageUtil {
     public static BufferedImage zoomImage(BufferedImage sourceImage, int width, int height) {
         BufferedImage image;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

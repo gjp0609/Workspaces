@@ -1,14 +1,17 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
 /**
- * @author guojinpeng
+ * @author gojinpeng
  * @date 17.9.18 10:46
  */
 public class PropertiesUtils {
+    /**
+     * 缓存的配置信息
+     */
     private static Map<String, Properties> propertiesMap = null;
 
 

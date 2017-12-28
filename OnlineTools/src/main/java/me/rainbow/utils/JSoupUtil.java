@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -10,7 +10,7 @@ import java.io.IOException;
  * @author guojinpeng
  * @date 17.12.6 09:43
  */
-public class JSoupUtils {
+public class JSoupUtil {
 
     public static Document get(String url) {
         Document doc = null;

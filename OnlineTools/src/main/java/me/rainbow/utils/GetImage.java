@@ -1,4 +1,4 @@
-package me.rainbow.util;
+package me.rainbow.utils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
