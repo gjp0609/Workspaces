@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/DubboCommon/pom.xml" />
         <option value="$PROJECT_DIR$/DubboConsumer/pom.xml" />
         <option value="$PROJECT_DIR$/OnlineTools/pom.xml" />
+        <option value="$PROJECT_DIR$/AdManagementSystem/pom.xml" />
       </list>
     </option>
   </component>
