@@ -9,7 +9,9 @@ import me.rainbow.entity.Log
  */
 interface LogService {
 
-    fun getAll(): List<Log>
+    fun getAllLogs(): List<Log>
 
     fun saveLog(log: Log)
+
+    fun getLog(id: Int): Log
 }
