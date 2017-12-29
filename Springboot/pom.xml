@@ -144,7 +144,7 @@
         </dependency>
         <dependency>
             <groupId>me.rainbow</groupId>
-            <artifactId>OnlineTools</artifactId>
+            <artifactId>AdManagementSystem</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
