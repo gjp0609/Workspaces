@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ import java.util.List;
 @RequestMapping("/test")
 @Controller("testController")
 public class TestController {
-    private static final ThreadLocal<String> THREAD_LOCAL = new ThreadLocal<>();
-    private static final Logger LOG = LoggerFactory.getLogger(TestController.class);
+    private static final HashMap<Long, String> THREAD_LOCAL_MAP = new HashMap<>();
+    private static final Logger log = LoggerFactory.getLogger(TestController.class);
 
     private final LogService service;
 
@@ -81,15 +82,15 @@ public class TestController {
     @RequestMapping(params = "uploadQrCode")
     @ResponseBody
     public void uploadQrCode(MultipartFile multipartFile) {
-        LOG.info("");
-        File file = new File(new File("").getAbsolutePath() + "/${multipartFile?.originalFilename}");
+        String filename = multipartFile.getOriginalFilename();
+        log.info("fileName:{}", filename);
+        File file = new File(new File("").getAbsolutePath() + "/" + filename);
+        log.info("file:{}", file.getAbsolutePath());
         try {
-            boolean newFile = file.createNewFile();
-            if (newFile) {
-                multipartFile.transferTo(file);
-                String decode = QrCodeUtil.decode(file);
-                THREAD_LOCAL.set(decode);
-            }
+            file.createNewFile();
+            multipartFile.transferTo(file);
+            String decode = QrCodeUtil.decode(file);
+            THREAD_LOCAL_MAP.put(Thread.currentThread().getId(), decode);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,6 +99,6 @@ public class TestController {
     @RequestMapping(params = "getContent")
     @ResponseBody
     public String uploadQrCode() {
-        return THREAD_LOCAL.get();
+        return THREAD_LOCAL_MAP.get(Thread.currentThread().getId());
     }
 }

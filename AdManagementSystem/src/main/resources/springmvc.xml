@@ -32,6 +32,21 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!-- 使用thymeleaf解析 -->
+    <!--<bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">-->
+    <bean id="templateResolver"
+          class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <constructor-arg ref="servletContext"/>
+        <property name="prefix" value="/WEB-INF/templates/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML5"/>
+    </bean>
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.TemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+    </bean>
+
     <!-- InternalResourceResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
